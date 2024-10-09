@@ -1,27 +1,19 @@
 # Biblioteca
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.7.
+Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli) versión 18.2.7.
 
-## Development server
+## Como descargar
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Deben de ir al boton verde que dice `<> code` y ahi seleccionan la opcion que prefieran ya sea clonar el repositio mediante el `link` o descargarlo como `.zip` y descomprirlo en una carpeta que gusten.
 
-## Code scaffolding
+## Como ejecutar
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1- Tener instalado el `Visual Studio Code` o un editor de texto equivalente, `Node v22.6.0`, `Angular CLI v18.2.7`, `NPM v10.9.0`.
 
-## Build
+2- Abrir el folder en el editor de texto y en la terminal de este ejecutar el comando `npm install`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3- Dentro de la carpeta `src` busca el archivo `enviroment.ts` y ahi coloca la ruta de tu API.
 
-## Running unit tests
+4- Ejecute `ng serve -o` para un servidor de desarrollo. Navegue hasta `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos fuente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+5- Los usuarios para pruebas son `bibliotecario@biblioteca.com` y `administrador@biblioteca.com`.
