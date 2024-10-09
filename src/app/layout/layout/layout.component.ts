@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../services/login.service';
@@ -35,6 +35,18 @@ export class LayoutComponent implements OnInit{
     { title: 'Libros', link: '/pages/libro', icon: '📖', rolId: 1 }           
     
   ];
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    const width = window.innerWidth;
+    // Oculta el sidebar si la pantalla es menor que 1024px (lg)
+    if (width < 1024) {
+      this.isSidebarHidden = true;
+    } else {
+      this.isSidebarHidden = false;
+    }
+  }
+
 
   constructor(
     private fb: FormBuilder,
