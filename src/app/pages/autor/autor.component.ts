@@ -7,14 +7,14 @@ import { AutorModalComponent } from './autor-modal/autor-modal.component';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-Autor',
+  selector: 'app-autor',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule
   ],
-  templateUrl: './Autor.component.html',
-  styleUrl: './Autor.component.css'
+  templateUrl: './autor.component.html',
+  styleUrl: './autor.component.css'
 })
 export class AutorComponent implements OnInit{
   

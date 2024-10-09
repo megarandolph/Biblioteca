@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-Libro',
+  selector: 'app-libro',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule
   ],
-  templateUrl: './Libro.component.html',
-  styleUrl: './Libro.component.css'
+  templateUrl: './libro.component.html',
+  styleUrl: './libro.component.css'
 })
 export class LibroComponent implements OnInit{
   

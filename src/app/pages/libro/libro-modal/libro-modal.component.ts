@@ -11,9 +11,9 @@ import { AutorService } from '../../../services/autor.service';
 
 
 @Component({
-  selector: 'app-Libro-modal',
-  templateUrl: './Libro-modal.component.html',
-  styleUrl: './Libro-modal.component.css',
+  selector: 'app-libro-modal',
+  templateUrl: './libro-modal.component.html',
+  styleUrl: './libro-modal.component.css',
   standalone: true,
   imports: [
     FormsModule, 

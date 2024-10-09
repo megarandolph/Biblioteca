@@ -9,14 +9,14 @@ import { AutorService } from '../../services/autor.service';
 
 
 @Component({
-  selector: 'app-Biblioteca',
+  selector: 'app-biblioteca',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule
   ],
-  templateUrl: './Biblioteca.component.html',
-  styleUrl: './Biblioteca.component.css'
+  templateUrl: './biblioteca.component.html',
+  styleUrl: './biblioteca.component.css'
 })
 export class BibliotecaComponent implements OnInit{
   

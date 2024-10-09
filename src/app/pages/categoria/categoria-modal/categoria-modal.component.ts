@@ -7,9 +7,9 @@ import { CategoriaService } from '../../../services/categoria.service';
 import { Categoria } from '../../../models/categoria.model';
 
 @Component({
-  selector: 'app-Categoria-modal',
-  templateUrl: './Categoria-modal.component.html',
-  styleUrl: './Categoria-modal.component.css',
+  selector: 'app-categoria-modal',
+  templateUrl: './categoria-modal.component.html',
+  styleUrl: './categoria-modal.component.css',
   standalone: true,
   imports: [
     FormsModule, 

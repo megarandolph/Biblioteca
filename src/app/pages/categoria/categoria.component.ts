@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-Categoria',
+  selector: 'app-categoria',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule
   ],
-  templateUrl: './Categoria.component.html',
-  styleUrl: './Categoria.component.css'
+  templateUrl: './categoria.component.html',
+  styleUrl: './categoria.component.css'
 })
 export class CategoriaComponent implements OnInit{
   

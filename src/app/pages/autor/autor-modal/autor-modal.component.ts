@@ -8,9 +8,9 @@ import { Autor } from '../../../models/autor.model';
 
 
 @Component({
-  selector: 'app-Autor-modal',
-  templateUrl: './Autor-modal.component.html',
-  styleUrl: './Autor-modal.component.css',
+  selector: 'app-autor-modal',
+  templateUrl: './autor-modal.component.html',
+  styleUrl: './autor-modal.component.css',
   standalone: true,
   imports: [
     FormsModule, 
