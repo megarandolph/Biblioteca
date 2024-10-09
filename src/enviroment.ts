@@ -1,3 +1,3 @@
 export const environment = {
-    api: 'https://localhost:44357'
+    api: 'https://biblioteca001-001-site1.dtempurl.com'    
   };
