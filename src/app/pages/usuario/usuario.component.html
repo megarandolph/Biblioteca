@@ -1,0 +1,74 @@
+<div class="container mx-auto p-4">
+    <div class="text-center my-8">
+        <h1 class="text-4xl font-bold text-gray-800">
+          Mantenimiento de Usuarios
+        </h1>
+        <p class="text-lg text-gray-600 mt-2">
+          Administra, edita y gestiona la información de los usuarios de la Biblioteca.
+        </p>
+      </div>
+
+    <!-- Filtro de búsqueda -->
+    <div class="mb-4">
+      <input 
+        [(ngModel)]="searchTerm" 
+        type="text" 
+        class="border border-gray-300 rounded-lg p-2 w-full" 
+        placeholder="Buscar por email o secuencia"
+      />
+    </div>
+    <button (click)="openDialog(null,'add','Agregar')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Agregar Usuario
+      </button>
+    <!-- Tabla de usuarios -->
+    <div class="overflow-x-auto p-2">
+      <table class="table-auto w-full text-left text-gray-700">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-4 py-2">Secuencia</th>
+            <th class="px-4 py-2">Email</th>
+            <th class="px-4 py-2">Rol</th>
+            <th class="px-4 py-2">Estado</th>
+            <th class="px-4 py-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of paginatedUsers">
+            <td class="border px-4 py-2">{{ user.usuarioId }}</td>
+            <td class="border px-4 py-2">{{ user.email }}</td>
+            <td class="border px-4 py-2">{{ user.rolId }}</td>
+            <td class="border px-4 py-2">
+              <span class="px-2 py-1 rounded-full text-white" [ngClass]="{'bg-green-500': user.status, 'bg-red-500': !user.status}">
+                {{ user.status ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="border px-4 py-2">
+              <!-- Botones de acción -->
+              <button (click)="openDialog(user,'view','Detalle')" class="text-blue-500 hover:text-blue-700">Ver</button>
+              <button (click)="openDialog(user,'edit','Editar')" class="text-yellow-500 hover:text-yellow-700 ml-2">Editar</button>
+              <button (click)="openDialog(user,'delete','Eliminar')" class="text-red-500 hover:text-red-700 ml-2">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Paginación -->
+    <div class="mt-4 flex justify-center">
+      <button 
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+        (click)="setPage(currentPage - 1)" 
+        [disabled]="currentPage === 1"
+      >
+        Anterior
+      </button>
+      <button 
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+        (click)="setPage(currentPage + 1)" 
+        [disabled]="paginatedUsers.length < pageSize"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
+  

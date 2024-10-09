@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout/layout.component';
 
 export const routes: Routes = [
     {
         path:'', 
-        component: AppComponent,
+        component: LayoutComponent,
         data: {
           title: 'Biblioteca'
         },

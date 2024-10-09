@@ -1,13 +1,41 @@
 import { Routes } from "@angular/router";
 import { AuthGuard } from "../auth.guard";
+import { UsuarioComponent } from "./usuario/usuario.component";
+import { CategoriaComponent } from "./categoria/categoria.component";
+import { AutorComponent } from "./autor/autor.component";
+import { LibroComponent } from "./libro/libro.component";
 
 export const PagesRoutes: Routes = [
     {
-      path: '',
-      //component: '',
+      path: 'usuario',
+      component: UsuarioComponent,
       data: {
-        title: 'Starter Page',
+        title: 'Usuario',
       },
-      canActivate:[AuthGuard],
+      //canActivate:[AuthGuard],
+    },
+    {
+        path: 'categoria',
+        component: CategoriaComponent,
+        data: {
+          title: 'Categoria',
+        },
+        //canActivate:[AuthGuard],
+    },
+    {
+        path: 'autor',
+        component: AutorComponent,
+        data: {
+          title: 'Autores',
+        },
+        //canActivate:[AuthGuard],
+    },
+    {
+        path: 'libro',
+        component: LibroComponent,
+        data: {
+          title: 'Libros',
+        },
+        //canActivate:[AuthGuard],
     }
 ]

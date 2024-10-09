@@ -1,0 +1,163 @@
+@if(data?.mode != 'delete') {
+    <div class="fixed inset-0 flex items-center justify-center bg-opacity-50">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl overflow-auto max-h-screen">
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">{{data.title}}</h2>
+  
+        <form [formGroup]="form" (ngSubmit)="Accept()">
+          
+          <div class="grid grid-cols-2 gap-2 -mx-3 mb-6">
+           
+           
+              
+              <div class="">
+                <label class="block text-gray-700">Título</label>
+                <input
+                  type="text"
+                  formControlName="titulo"
+                  class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                  placeholder="Libro"
+                />
+                <div *ngIf="form.get('titulo')?.invalid && form.get('titulo')?.touched" class="text-red-500">
+                  El título es requerido
+                </div>
+              </div>          
+              
+            
+              
+              <div class="">
+                <label class="block text-gray-700">Fecha de Publicación</label>
+                <input
+                  type="date"
+                  formControlName="fechaPublicacion"
+                  class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                  
+                />
+              </div>
+          
+
+          
+            <div class="col-span-2">
+                <label class="block text-gray-700">Descripción</label>
+                <textarea
+                  formControlName="descripcion"
+                  class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                  placeholder="Descripción del libro"
+                ></textarea>
+              </div>
+           
+        
+          <div class="col-span-2">
+            <label class="block text-gray-700">Categorías</label>
+            @if(data?.mode != 'view'){
+            <ng-select
+              [items]="categoriasList"
+              bindLabel="nombre"
+              bindValue="categoriaId"
+              [multiple]="true"
+              [searchable]="true"
+              [closeOnSelect]="false"
+              formControlName="categorias"
+              placeholder="Selecciona categorías"
+              class="w-full"
+            >
+            </ng-select>
+            }
+            <!-- Tabla de Categorías seleccionadas -->
+            <table class="w-full mt-2 border-collapse">
+              <thead>
+                <tr>
+                  <th class="border px-2 py-1">ID</th>
+                  <th class="border px-2 py-1">Categoría</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let categoria of form.get('categorias')?.value">
+                  <td class="border px-2 py-1">{{ categoria }}</td>
+                  <td class="border px-2 py-1">{{ getCategoriaName(categoria) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <!-- Autores (Multi-select con búsqueda sin checkboxes) -->
+          <div class="col-span-2">
+            <label class="block text-gray-700">Autores</label>
+            @if(data?.mode != 'view'){
+            <ng-select
+              [items]="autoresList"
+              bindLabel="nombre"
+              bindValue="autorId"
+              [multiple]="true"
+              [searchable]="true"     
+              [closeOnSelect]="false"         
+              formControlName="autores"
+              placeholder="Selecciona autores"
+              class="w-full"
+            >
+            </ng-select>
+            }
+            <!-- Tabla de Autores seleccionados -->
+            <table class="w-full mt-2 border-collapse">
+              <thead>
+                <tr>
+                  <th class="border px-2 py-1">ID</th>
+                  <th class="border px-2 py-1">Autor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let autor of form.get('autores')?.value">
+                  <td class="border px-2 py-1">{{ autor }}</td>
+                  <td class="border px-2 py-1">{{ getAutorName(autor) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+        </div>  
+          <div class="flex justify-end space-x-4">
+            <button
+              type="button"
+              (click)="closeDialog()"
+              class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+            >
+              Cancelar
+            </button>
+            @if(data?.mode != 'view') {
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+              >
+                Guardar
+              </button>
+            }
+          </div>
+        </form>
+      </div>
+    </div>
+  } 
+  @else {
+   
+    <div class="fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+      <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">Confirmar Eliminación</h2>
+        <p class="text-gray-600">¿Estás seguro de que deseas eliminar esto?</p>
+  
+        <div class="flex justify-end mt-6 space-x-4">
+          <button
+            (click)="closeDialog()"
+            class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
+          >
+            Cancelar
+          </button>
+          <button
+            (click)="Accept()"
+            class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+          >
+            Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+  
