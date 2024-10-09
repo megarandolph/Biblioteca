@@ -98,7 +98,7 @@
       <nav>
         <ul>
           <li *ngFor="let item of sidebarItems" class="p-4 hover:bg-gray-700">
-            <a [routerLink]="item.link" class="flex items-center space-x-4">
+            <a [routerLink]="item.link" (click)="onMenuClick()" class="flex items-center space-x-4">
               <span>{{ item.icon }}</span>
               <span>{{ item.title }}</span>
             </a>

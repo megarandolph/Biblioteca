@@ -83,6 +83,12 @@ export class LayoutComponent implements OnInit{
     );
   }
 
+  onMenuClick() {
+    if (window.innerWidth < 1024) {
+      this.isSidebarHidden = true;
+    }
+  }
+
   Logout(){
     this.authService.removeToken();
     this.isLogin = false;
