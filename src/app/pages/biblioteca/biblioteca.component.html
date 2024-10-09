@@ -1,0 +1,122 @@
+<div class="container mx-auto p-4">
+    <div class="text-center my-8">
+        <h1 class="text-4xl font-bold text-gray-800">
+          Biblioteca de libros
+        </h1>
+        <p class="text-lg text-gray-600 mt-2">
+          Busca la información de los Libros de la Biblioteca.
+        </p>
+      </div>
+
+    <!-- Filtro de búsqueda -->
+    <div class="mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label class="block text-gray-700">Buscar por título o autor</label>
+                <input
+                type="text"
+                [(ngModel)]="searchTerm"
+                class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                placeholder="Buscar por título o autor"
+                />
+            </div>
+        
+            <!-- Filtro por fecha de publicación (desde) -->
+            <div>
+                <label class="block text-gray-700">Fecha de publicación (desde)</label>
+                <input
+                type="date"
+                [(ngModel)]="startDate"
+                class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                />
+            </div>
+        
+            <!-- Filtro por fecha de publicación (hasta) -->
+            <div>
+                <label class="block text-gray-700">Fecha de publicación (hasta)</label>
+                <input
+                type="date"
+                [(ngModel)]="endDate"
+                class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                />
+            </div>
+        
+            <!-- Filtro por categoría -->
+            <div>
+                <label class="block text-gray-700">Categoría</label>
+                <select
+                [(ngModel)]="selectedCategory"
+                class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                >
+                <option value="">Todas las categorías</option>
+                <option *ngFor="let categoria of categoriasList" [value]="categoria.categoriaId">
+                    {{ categoria.nombre }}
+                </option>
+                </select>
+            </div>
+
+            <!-- Filtro por autor -->
+            <div>
+                <label class="block text-gray-700">Autor</label>
+                <select
+                [(ngModel)]="selectedAutor"
+                class="w-full px-4 py-2 border rounded-lg text-gray-700"
+                >
+                <option value="">Todos los autores</option>
+                <option *ngFor="let autor of autoresList" [value]="autor.autorId">
+                    {{ autor.nombre }}
+                </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- Tabla de usuarios -->
+    <div class="overflow-x-auto p-2">
+      <table class="table-auto w-full text-left text-gray-700">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-4 py-2">Secuencia</th>
+            <th class="px-4 py-2">Titulo</th>                                  
+            <th class="px-4 py-2">Fecha de publicacion</th>                                  
+            <th class="px-4 py-2">Estado</th>
+            <th class="px-4 py-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Libro of paginatedLibro">
+            <td class="border px-4 py-2">{{ Libro.libroId }}</td>
+            <td class="border px-4 py-2">{{ Libro.titulo }}</td>            
+            <td class="border px-4 py-2">{{ Libro.fechaPublicacion | date:'dd/MM/yyyy' }}</td>            
+            <td class="border px-4 py-2">
+              <span class="px-2 py-1 rounded-full text-white" [ngClass]="{'bg-green-500': Libro.status, 'bg-red-500': !Libro.status}">
+                {{ Libro.status ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="border px-4 py-2">
+              <!-- Botones de acción -->
+              <button (click)="openDialog(Libro,'view','Detalle')" class="text-blue-500 hover:text-blue-700">Ver</button>              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Paginación -->
+    <div class="mt-4 flex justify-center">
+      <button 
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+        (click)="setPage(currentPage - 1)" 
+        [disabled]="currentPage === 1"
+      >
+        Anterior
+      </button>
+      <button 
+        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+        (click)="setPage(currentPage + 1)" 
+        [disabled]="paginatedLibro.length < pageSize"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
+  

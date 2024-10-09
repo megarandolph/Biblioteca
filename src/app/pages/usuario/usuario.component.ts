@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { UsuarioModalComponent } from './usuario-modal/usuario-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioService } from '../../services/usuario.service';
+import { routes } from '../../app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -19,6 +21,8 @@ export class UsuarioComponent implements OnInit{
   
   
   usuarioList: any[] = [];
+  rolId:any = localStorage.getItem('rolId');
+
 
   // Parámetros de la paginación
   pageSize = 5;
@@ -28,11 +32,19 @@ export class UsuarioComponent implements OnInit{
 
   constructor(
     public dialog: MatDialog, 
-    private usuarioServices: UsuarioService
+    private usuarioServices: UsuarioService,
+    private router: Router
   ){}
 
-  ngOnInit(): void {
-    this.getUsuarios();
+  ngOnInit(): void {    
+    if(this.rolId == 2)
+    {      
+      this.getUsuarios();
+    }
+    else{
+      this.router.navigate(['/']);
+    }
+      
   }
   // Obtener usuarios paginados
   get paginatedUsers() {

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LibroService } from '../../services/libro.service';
 import { LibroModalComponent } from './libro-modal/libro-modal.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class LibroComponent implements OnInit{
   
   
   LibroList: any[] = [];
+  rolId:any = localStorage.getItem('rolId');
+
 
   // Parámetros de la paginación
   pageSize = 5;
@@ -29,11 +32,18 @@ export class LibroComponent implements OnInit{
 
   constructor(
     public dialog: MatDialog, 
-    private LibroServices: LibroService
+    private LibroServices: LibroService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
-    this.getLibros();
+    if(this.rolId == 1)
+      {      
+        this.getLibros();
+      }
+      else{
+        this.router.navigate(['/']);
+      }
   }
   // Obtener Libros paginados
   get paginatedLibro() {

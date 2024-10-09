@@ -4,6 +4,7 @@ import { UsuarioComponent } from "./usuario/usuario.component";
 import { CategoriaComponent } from "./categoria/categoria.component";
 import { AutorComponent } from "./autor/autor.component";
 import { LibroComponent } from "./libro/libro.component";
+import { BibliotecaComponent } from "./biblioteca/biblioteca.component";
 
 export const PagesRoutes: Routes = [
     {
@@ -12,7 +13,7 @@ export const PagesRoutes: Routes = [
       data: {
         title: 'Usuario',
       },
-      //canActivate:[AuthGuard],
+      canActivate:[AuthGuard],
     },
     {
         path: 'categoria',
@@ -20,7 +21,7 @@ export const PagesRoutes: Routes = [
         data: {
           title: 'Categoria',
         },
-        //canActivate:[AuthGuard],
+        canActivate:[AuthGuard],
     },
     {
         path: 'autor',
@@ -28,7 +29,7 @@ export const PagesRoutes: Routes = [
         data: {
           title: 'Autores',
         },
-        //canActivate:[AuthGuard],
+        canActivate:[AuthGuard],
     },
     {
         path: 'libro',
@@ -36,6 +37,13 @@ export const PagesRoutes: Routes = [
         data: {
           title: 'Libros',
         },
-        //canActivate:[AuthGuard],
+        canActivate:[AuthGuard],
+    },
+    {
+        path: 'biblioteca',
+        component: BibliotecaComponent,
+        data: {
+          title: 'biblioteca',
+        }        
     }
 ]

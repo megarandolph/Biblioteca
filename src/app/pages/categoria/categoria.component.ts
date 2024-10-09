@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoriaService } from '../../services/categoria.service';
 import { CategoriaModalComponent } from './categoria-modal/categoria-modal.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class CategoriaComponent implements OnInit{
   
   
   CategoriaList: any[] = [];
+  rolId:any = localStorage.getItem('rolId');
+
 
   // Parámetros de la paginación
   pageSize = 5;
@@ -29,11 +32,19 @@ export class CategoriaComponent implements OnInit{
 
   constructor(
     public dialog: MatDialog, 
-    private CategoriaServices: CategoriaService
+    private CategoriaServices: CategoriaService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
-    this.getCategorias();
+    if(this.rolId == 2)
+      {      
+        this.getCategorias();
+      }
+      else{
+        this.router.navigate(['/']);
+      }
+    
   }
   // Obtener Categorias paginados
   get paginatedCategoria() {

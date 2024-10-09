@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AutorService } from '../../services/autor.service';
 import { AutorModalComponent } from './autor-modal/autor-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Autor',
@@ -19,6 +20,8 @@ export class AutorComponent implements OnInit{
   
   
   AutorList: any[] = [];
+  rolId:any = localStorage.getItem('rolId');
+
 
   // Parámetros de la paginación
   pageSize = 5;
@@ -28,11 +31,19 @@ export class AutorComponent implements OnInit{
 
   constructor(
     public dialog: MatDialog, 
-    private AutorServices: AutorService
+    private AutorServices: AutorService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
-    this.getAutors();
+    if(this.rolId == 1)
+      {
+        this.getAutors();
+      }
+      else{
+        this.router.navigate(['/']);
+      }
+    
   }
   // Obtener Autors paginados
   get paginatedAutor() {

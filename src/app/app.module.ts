@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -16,7 +17,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommonModule,
     AppComponent,
     RouterModule,
-    NgSelectModule 
+    NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     LoadingService,

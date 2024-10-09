@@ -6,6 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
+import { AppModule } from './app.module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,8 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimationsAsync(),
     importProvidersFrom(
-      FormsModule,
-      ReactiveFormsModule,
+      AppModule
     )
   ]
 };
